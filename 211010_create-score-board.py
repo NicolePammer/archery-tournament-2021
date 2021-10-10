@@ -16,7 +16,7 @@ from datetime import date
 df = pd.DataFrame(columns = "target arrow_01 arrow_02 value total".split())
 
 # USER INPUT: WHAT'S YOUR NAME?
-archer = input("Enter your name: ")
+archer = input("Enter your name: ").replace(" ", "_").casefold() # casefold does the same as lower but is more aggressive (changes ß to "ss" for example)
 
 # CREATING THE CSV-FILE NAME
 today = date.today()
