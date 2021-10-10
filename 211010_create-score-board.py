@@ -2,7 +2,7 @@
 """
 BOW TOURNAMENT
 
-I had a bow tournament with the rating "double hunter according to WA".
+I had a bow tournament with the rating "double hunter according to WA". ("Doppel-Unter nach WA" (GER))
 In this program the archer can enter the shots. The score of the shots is added up.
 At the end the data is stored as a table in a CSV-File (comma separated).
 """
