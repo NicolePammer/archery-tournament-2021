@@ -1,8 +1,9 @@
 
+
 """
 BOW TOURNAMENT
 
-I had a bow tournament with the rating "double hunter according to WA". ("Doppel-Unter nach WA" (GER))
+I had a bow tournament with the rating "double hunter according to WA".
 In this program the archer can enter the shots. The score of the shots is added up.
 At the end the data is stored as a table in a CSV-File (comma separated).
 """
@@ -16,18 +17,29 @@ from datetime import date
 df = pd.DataFrame(columns = "target arrow_01 arrow_02 value total".split())
 
 # USER INPUT: WHAT'S YOUR NAME?
-archer = input("Enter your name: ").replace(" ", "_").casefold() # casefold does the same as lower but is more aggressive (changes ß to "ss" for example)
+archer = input("Enter your name: ").replace(" ", "_").casefold() # casefold equals lower but is more aggressive
+
+# USER INPUT: WHICH CLASS DO YOU SHOOT?
+while True:
+    bowclass = input ("\nChose your bowclass\
+        \nLB ... long bow\
+        \nIB ... intuitive bow\
+        \nBB ... bare bow\
+        \nCO ... compound bow\
+        \nYour bowclass ( LB | IB | BB | CO): ").upper()
+    if bowclass == "LB" or "IB" or "BB" or "CO": 
+        break
 
 # CREATING THE CSV-FILE NAME
 today = date.today()
-filename = str(today.year)[-2:] + str(today.month) + str(today.day) + "_" + archer + ".csv"
+filename = str(today.year)[-2:] + str(today.month) + str(today.day) + "_" + archer + "_" + bowclass + ".csv"
 
 # USER INPUT: HOW MANY TARGETS DOES YOUR COURSE HAVE?
-number_of_targets = int(input("Enter number of targets: "))
+number_of_targets = int(input("\nEnter number of targets: "))
 target_possibilities = np.arange(1,number_of_targets+1)
 
 # GIVEN: POINT POSSIBILITES ("TYPE: DOPPELHUNTER NACH WA (GER)")
-point_possibilities = "11 10 8 5 0 M".split() # zero equals "M"
+point_possibilities = "11 10 8 5 0 M".split()
 
 # INITAL VALUES
 value = 0
@@ -35,6 +47,7 @@ total = 0
 t = 1  #target
 arrow_01 = 'M'
 arrow_02 = 'M'
+total_max = (11 * 2) * number_of_targets
 
 
 #while True:
@@ -49,7 +62,7 @@ arrow_02 = 'M'
 # ENTER THE SHOTS
 while t in target_possibilities:
     while True:
-        arrow_01 = input("Taget %s / Arrow 1: " %t)
+        arrow_01 = input("\nTaget %s / Arrow 1: " %t)
         if arrow_01 in point_possibilities:
             break
         elif arrow_01 == "/back":
@@ -90,11 +103,16 @@ while t in target_possibilities:
 
     # NEXT TARGET NUMBER
     t += 1
+            
+# REACHED PERCENTAGE
+percent = float(total) / float(total_max)
+print("{} = {} / {}".format(percent, total, total_max))
 
 # PRINT INFORMATION FOR ARCHER
-print("You reached a total of %s points!" %total)
+print("\nYou reached a total of {} points! This is {:.2%} of the maximum achievable score.".format(total, percent))
+
 
 # SAFE THE DATAFRAME TO A CSV-FILE
 df.set_index("target", inplace = True)
 df.to_csv(filename, sep=",")
-
+print("\nScore-Board got saved into %s" %filename)
