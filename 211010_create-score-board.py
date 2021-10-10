@@ -45,8 +45,8 @@ point_possibilities = "11 10 8 5 0 M".split()
 value = 0
 total = 0
 t = 1  #target
-arrow_01 = 'M'
-arrow_02 = 'M'
+arrow_01 = 'M' # M ... miss (zero points)
+arrow_02 = 'M' 
 total_max = (11 * 2) * number_of_targets
 
 
