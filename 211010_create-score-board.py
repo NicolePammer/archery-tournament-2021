@@ -27,7 +27,7 @@ number_of_targets = int(input("Enter number of targets: "))
 target_possibilities = np.arange(1,number_of_targets+1)
 
 # GIVEN: POINT POSSIBILITES ("TYPE: DOPPELHUNTER NACH WA (GER)")
-point_possibilities = "11 10 8 5 0 M".split()
+point_possibilities = "11 10 8 5 0 M".split() # zero equals "M"
 
 # INITAL VALUES
 value = 0
