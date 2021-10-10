@@ -26,7 +26,7 @@ while True:
         \nIB ... intuitive bow\
         \nBB ... bare bow\
         \nCO ... compound bow\
-        \nYour bowclass ( LB | IB | BB | CO): ").upper()
+        \nYour bowclass ( LB | IB | BB | CO): ").lower()
     if bowclass == "LB" or "IB" or "BB" or "CO": 
         break
 
