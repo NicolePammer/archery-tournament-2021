@@ -106,7 +106,7 @@ while t in target_possibilities:
             
 # REACHED PERCENTAGE
 percent = float(total) / float(total_max)
-print("{} = {} / {}".format(percent, total, total_max))
+#print("\n{} = {} / {}".format(percent, total, total_max))
 
 # PRINT INFORMATION FOR ARCHER
 print("\nYou reached a total of {} points! This is {:.2%} of the maximum achievable score.".format(total, percent))
