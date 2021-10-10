@@ -82,7 +82,7 @@ while t in target_possibilities:
 
     # ADD THE NEW DATA TO THE DATAFRAME
     df_t = df.T # transpose
-    df_t[t] = [t, arrow_01, arrow_02, value, total] # add a new line to the transposed dataframe
+    df_t[t] = [t, int_arrow_01, int_arrow_02, value, total] # add a new line to the transposed dataframe
     df = df_t.T # tranpose back to original dataframe
 
     # PRINT THE CURRENT DATAFRAME
